@@ -1,0 +1,29 @@
+trigger:
+- master
+
+stages:
+- stage: Calidad
+  jobs:
+  - job: DeployToCalidad
+    pool:
+      name: 'Default'
+    steps:
+    - script: echo "Desplegando en ambiente de calidad"
+    - task: CopyFiles@2
+      inputs:
+        SourceFolder: '$(Build.SourcesDirectory)'
+        Contents: '**'
+        TargetFolder: '/path/to/calidad'
+
+- stage: Productivo
+  jobs:
+  - job: DeployToProductivo
+    pool:
+      name: 'Default'
+    steps:
+    - script: echo "Desplegando en ambiente productivo"
+    - task: CopyFiles@2
+      inputs:
+        SourceFolder: '$(Build.SourcesDirectory)'
+        Contents: '**'
+        TargetFolder: '/path/to/productivo'
