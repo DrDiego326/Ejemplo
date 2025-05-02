@@ -6,7 +6,7 @@ stages:
   jobs:
   - job: DeployToCalidad
     pool:
-      vmImage: 'ubuntu-latest'
+      name: 'Default'
     steps:
     - script: echo "Desplegando en ambiente de calidad"
     - task: CopyFiles@2
@@ -19,7 +19,7 @@ stages:
   jobs:
   - job: DeployToProductivo
     pool:
-      vmImage: 'ubuntu-latest'
+      name: 'Default'
     steps:
     - script: echo "Desplegando en ambiente productivo"
     - task: CopyFiles@2
